@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "463782373077",
+    "project_id": "shila-restaurant-58e3b",
+    "storage_bucket": "shila-restaurant-58e3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463782373077:android:7888fe7607531e6e86245c",
+        "android_client_info": {
+          "package_name": "com.example.restaurant_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463782373077-ts78angvju2tld1o21fptgihe5kd1r8i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.restaurant_app",
+            "certificate_hash": "9cc517a9b57364e02a7477806fd4eb5895ffa313"
+          }
+        },
+        {
+          "client_id": "463782373077-3s9b8nf1prufsnl9c122akkqs4mf20i2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFo8t0E1g5Lt6pVPbgnHRAD6NYL-f5bc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463782373077-3s9b8nf1prufsnl9c122akkqs4mf20i2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
