@@ -13,9 +13,13 @@ class BranchController extends GetxController{
   String _name = '';
   String get name => _name;
 
-  setBranchName(String branchName) async{
-    _name = await branchRepo.setBranchName(branchName);
-    _isLoaded = true;
+  String _address = '';
+  String get address => _address;
+
+  setBranch(String branchName, String branchAddress) async{
+    print("setBranch setBranch setBranch setBranch setBranch");
+    _name = await branchRepo.setBranchName(branchName, branchAddress);
+    // _isLoaded = true;
     update();
   }
 
@@ -25,5 +29,13 @@ class BranchController extends GetxController{
     // _isLoaded = true;
     update();
     return _name;
+  }
+
+  Future<String> getBranchAddress() async{
+
+    _address = await branchRepo.getBranchAddress();
+    // _isLoaded = true;
+    update();
+    return _address;
   }
 }

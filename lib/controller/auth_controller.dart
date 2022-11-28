@@ -52,8 +52,10 @@ class AuthController extends GetxController implements GetxService {
         await HelperFunctions.saveUserLoggedInStatus(true);
         await HelperFunctions.saveUserEmailSF(email);
         await HelperFunctions.saveUserNameSF(snapshot.docs[0]['fullName']);
+        Get.offNamed(RouteHelper.getInitial());
         // nextScreenReplace(context, const HomePage());
       } else {
+        Get.snackbar("Hi",value,backgroundColor: Colors.red);
         // showSnackbar(context, Colors.red, value);
         _isLoading = false;
         update();

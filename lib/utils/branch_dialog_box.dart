@@ -85,7 +85,14 @@ class _BranchDialogBoxState extends State<BranchDialogBox> {
                     itemBuilder: (context, index){
                       return GestureDetector(
                         onTap: (){
-                          Get.find<BranchController>().setBranchName(allBranches[index]["branch-name"]);
+                          print(allBranches[index]["branch-name"]);
+                          print(allBranches[index]["branch-address"]);
+                          Get.find<BranchController>().setBranch(
+                              allBranches[index]["branch-name"],
+                              allBranches[index]["branch-address"]);
+                          Get.find<BranchController>().getBranchName();
+                          Get.find<BranchController>().getBranchAddress();
+                          Get.back();
                           // widget.branch = allBranches[index]["branch-name"];
                           // widget.branchAddress = allBranches[index]["branch-address"];
                           // print("11111     "+allBranches[index]["branch-name"]);

@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:restaurant_app/controller/branch_controller.dart';
 import 'package:restaurant_app/pages/auth/login_page.dart';
 import 'package:restaurant_app/utils/branch_dialog_box.dart';
+import 'package:restaurant_app/utils/menu_icons.dart';
 import 'package:restaurant_app/utils/search_text_field.dart';
 import 'package:restaurant_app/utils/dimensions.dart';
 import 'package:restaurant_app/utils/food_menu_icon.dart';
@@ -21,6 +22,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
 
+  late AnimationController _animationController;
   late TabController _tabController;
   var searchController = TextEditingController();
   final _controller = ScrollController();
@@ -31,7 +33,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this);
-    Get.find<BranchController>().getBranchName();
+    _animationController =
+    AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    _animationController.repeat(reverse: true);
     super.initState();
   }
 
@@ -39,10 +43,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   void dispose() {
     super.dispose();
     _tabController.dispose();
+    _animationController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+
     print(reserveTime.hour);
     return  Scaffold(
       resizeToAvoidBottomInset: false,
@@ -116,53 +122,87 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                       ),
                     ),
                     GetBuilder<BranchController>(builder: (branchController){
-                      return Center(
-                        child: Column(
-                          children: [
-                            SizedBox(height: Dimensions.height30,),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(branchController.name.isEmpty ? "ونک" : branchController.name,
-                                  style: PersianFonts.Sahel.copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 28),),
-                                Text(" شعبه",
-                                  style: PersianFonts.Sahel.copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 28),),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(branchAddress.isEmpty ?"ضلع جنوب شرقی میدان ونک" : branchAddress,
-                                  style: PersianFonts.Sahel.copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18),),
-                                Text("آدرس: ",
-                                  textDirection: TextDirection.rtl,
-                                  style: PersianFonts.Sahel.copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18),),
-                              ],
-                            ),
-                            SizedBox(height: Dimensions.height20,),
-                            BranchDialogBox(branch: branch, branchAddress: branchAddress,),
-                            SizedBox(height: Dimensions.height30,),
-                            reserveTime.hour > 11
-                                ? const Text('')
-                                : Text("شروع سفارش گیری از ساعت 11:00:00 امروز",
-                                style: PersianFonts.Samim.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w200,
-                                    fontSize: 15))
 
-                          ],
+                      return Center(
+                        child: Container(
+                          margin: EdgeInsets.only(
+                            left: Dimensions.width20,
+                            right: Dimensions.width20
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(height: Dimensions.height20,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(branchController.name.isEmpty ? "ونک" : branchController.name,
+                                    style: PersianFonts.Sahel.copyWith(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 28),),
+                                  Text(" شعبه",
+                                    style: PersianFonts.Sahel.copyWith(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 28),),
+                                ],
+                              ),
+                              SizedBox(height: Dimensions.height10,),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Text(branchController.address.isEmpty ? "ضلع جنوب شرقی میدان ونک" : branchController.address,
+                                      textDirection: TextDirection.rtl,
+                                      textAlign: TextAlign.justify,
+                                      style: PersianFonts.Sahel.copyWith(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18),),
+                                  ),
+                                  Text("آدرس: ",
+                                    textDirection: TextDirection.rtl,
+                                    style: PersianFonts.Sahel.copyWith(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18),),
+                                ],
+                              ),
+                              SizedBox(height: Dimensions.height20,),
+                              BranchDialogBox(branch: branch, branchAddress: branchAddress,),
+                              SizedBox(height: Dimensions.height30,),
+                              reserveTime.hour >= 11
+                                  ? Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+
+                                      Text('سفارش می پذیریم',
+                                      style: PersianFonts.Samim.copyWith(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w200,
+                                          fontSize: 15)),
+                                      SizedBox(width: Dimensions.width10,),
+                                      FadeTransition(
+                                        opacity: _animationController,
+                                        child: Container(
+                                          width: Dimensions.width30/2,
+                                          height: Dimensions.height30/2,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.green
+                                          ),
+                                        ))
+                                    ],
+                                  )
+                                  : Text("شروع سفارش گیری از ساعت 11:00:00 امروز",
+                                  style: PersianFonts.Samim.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w200,
+                                      fontSize: 15))
+
+                            ],
+                          ),
                         ),
                       );
                     })
@@ -217,40 +257,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   // second tab bar view widget
                   Column(
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                            top: Dimensions.height10,
-                            right: Dimensions.width20,
-                            left: Dimensions.width20,
-                            bottom: Dimensions.height10
-                        ),
-                        child: SingleChildScrollView(
-                          reverse: true,
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                              children: [
-                                SizedBox(width: Dimensions.width45,),
-                                FoodMenuIcon(controller: _controller, imagePath: "unselectedDrink.png", iconName: "نوشیدنی",),
-                                SizedBox(width: Dimensions.width45,),
-                                FoodMenuIcon(controller: _controller, imagePath: "unselectedPutin.png", iconName: "پیش عذا",),
-                                SizedBox(width: Dimensions.width45,),
-                                FoodMenuIcon(controller: _controller, imagePath: "unselectedPutin.png", iconName: "پوتین",),
-                                SizedBox(width: Dimensions.width45,),
-                                FoodMenuIcon(controller: _controller, imagePath: "unselectedSokhari.png", iconName: "سوخاری",),
-                                SizedBox(width: Dimensions.width45,),
-                                FoodMenuIcon(controller: _controller, imagePath: "unselectedHotSandwich.png", iconName: "ساندویچ گرم",),
-                                SizedBox(width: Dimensions.width45,),
-                                FoodMenuIcon(controller: _controller, imagePath: "unselectedBerger.png", iconName: "برگر",),
-                                SizedBox(width: Dimensions.width45,),
-                                FoodMenuIcon(controller: _controller, imagePath: "unselectedHotdog.png", iconName: "هات داگ",),
-                                SizedBox(width: Dimensions.width45,),
-                                FoodMenuIcon(controller: _controller, imagePath: "unselectedCombo.png", iconName: "پیتزا",),
-                                SizedBox(width: Dimensions.width45,),
-                                FoodMenuIcon(controller: _controller, imagePath: "unselectedCombo.png", iconName: "کمبو",)
-                              ]
-                          ),
-                        ),
-                      ),
+                      MenuIcons(controller: _controller,),
                       const Divider(
                         color: Colors.grey,
                       ),
