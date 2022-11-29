@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/routes/route_helper.dart';
-import 'package:restaurant_app/utils/dimensions.dart';
+import 'package:restaurant_app/widget/dimensions.dart';
 import 'package:get/get.dart';
 
 class GoToInitialPageIcon extends StatelessWidget {

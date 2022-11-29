@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/controller/branch_controller.dart';
-import 'package:restaurant_app/utils/dimensions.dart';
+import 'package:restaurant_app/widget/dimensions.dart';
 
 class BranchDialogBox extends StatefulWidget {
   String? branch;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/utils/dimensions.dart';
-import 'package:restaurant_app/utils/food_menu_icon.dart';
+import 'package:restaurant_app/widget/dimensions.dart';
+import 'package:restaurant_app/widget/food_menu_icon.dart';
 
 class MenuIcons extends StatelessWidget {
 

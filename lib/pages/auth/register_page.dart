@@ -5,13 +5,13 @@ import 'package:restaurant_app/helper/helper_function.dart';
 import 'package:restaurant_app/pages/home/home_page.dart';
 import 'package:restaurant_app/repository/auth_repo.dart';
 import 'package:restaurant_app/routes/route_helper.dart';
-import 'package:restaurant_app/utils/app_logo.dart';
-import 'package:restaurant_app/utils/app_text_field.dart';
-import 'package:restaurant_app/utils/colors.dart';
-import 'package:restaurant_app/utils/custom_loader.dart';
-import 'package:restaurant_app/utils/dimensions.dart';
-import 'package:restaurant_app/utils/go_to_initial_page_button.dart';
-import 'package:restaurant_app/utils/widgets.dart';
+import 'package:restaurant_app/widget/app_logo.dart';
+import 'package:restaurant_app/widget/app_text_field.dart';
+import 'package:restaurant_app/widget/colors.dart';
+import 'package:restaurant_app/widget/custom_loader.dart';
+import 'package:restaurant_app/widget/dimensions.dart';
+import 'package:restaurant_app/widget/go_to_initial_page_button.dart';
+import 'package:restaurant_app/widget/widgets.dart';
 import 'package:get/get.dart';
 
 class RegisterPage extends StatefulWidget {

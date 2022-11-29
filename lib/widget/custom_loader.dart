@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/utils/colors.dart';
-import 'package:restaurant_app/utils/dimensions.dart';
+import 'package:restaurant_app/widget/colors.dart';
+import 'package:restaurant_app/widget/dimensions.dart';
 
 class CustomLoader extends StatelessWidget {
   const CustomLoader({Key? key}) : super(key: key);

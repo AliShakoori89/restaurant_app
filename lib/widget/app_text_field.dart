@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/utils/widgets.dart';
+import 'package:restaurant_app/widget/widgets.dart';
 
 class AppTextField extends StatefulWidget {
 

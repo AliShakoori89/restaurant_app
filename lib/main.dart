@@ -4,7 +4,7 @@ import 'package:restaurant_app/controller/auth_controller.dart';
 import 'package:restaurant_app/controller/branch_controller.dart';
 import 'package:restaurant_app/helper/helper_function.dart';
 import 'package:restaurant_app/pages/auth/login_page.dart';
-import 'package:restaurant_app/utils/colors.dart';
+import 'package:restaurant_app/widget/colors.dart';
 import 'pages/home/home_page.dart';
 import 'package:get/get.dart';
 import 'helper/dependencies.dart' as dep;

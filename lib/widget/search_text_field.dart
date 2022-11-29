@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/utils/dimensions.dart';
+import 'package:restaurant_app/widget/dimensions.dart';
 
 class SearchTextField extends StatelessWidget {
 

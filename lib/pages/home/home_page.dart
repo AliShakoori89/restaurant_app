@@ -1,16 +1,13 @@
-import 'dart:async';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/controller/branch_controller.dart';
 import 'package:restaurant_app/pages/auth/login_page.dart';
-import 'package:restaurant_app/utils/branch_dialog_box.dart';
-import 'package:restaurant_app/utils/menu_icons.dart';
-import 'package:restaurant_app/utils/search_text_field.dart';
-import 'package:restaurant_app/utils/dimensions.dart';
-import 'package:restaurant_app/utils/food_menu_icon.dart';
+import 'package:restaurant_app/widget/all_food_types/combo_food_menu.dart';
+import 'package:restaurant_app/widget/branch_dialog_box.dart';
+import 'package:restaurant_app/widget/menu_icons.dart';
+import 'package:restaurant_app/widget/search_text_field.dart';
+import 'package:restaurant_app/widget/dimensions.dart';
 import 'package:persian_fonts/persian_fonts.dart';
 
 class HomePage extends StatefulWidget {
@@ -272,144 +269,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                       const Divider(
                         color: Colors.grey,
                       ),
-                      Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                right: Dimensions.width20
-                              ),
-                              child: Text("کمبو",
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: Dimensions.font26
-                                ),),
-                            ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              right: Dimensions.width20
                           ),
-                          SizedBox(height: Dimensions.height10/2,),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                  left: Dimensions.width20,
-                                  right: Dimensions.width20,
-                                ),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey)
-                                ),
-                                child: Column(
-                                  children: [
-                                    Image.asset("assets/images/comboFood/combo.png",
-                                        alignment: Alignment.topCenter),
-                                    Container(
-                                      margin: EdgeInsets.only(
-                                        left: Dimensions.width10,
-                                        right: Dimensions.width10,
-                                        bottom: Dimensions.width10,
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.end,
-                                        children: [
-                                          Text('هپی کمبو',
-                                            style: TextStyle(fontSize: Dimensions.font20,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w600),),
-                                          SizedBox(height: Dimensions.height10/2,),
-                                          Text('پیتزا رست بیف 23 + سیب زمینی هان داگ فرایزر + 2 عدد نوشابه',
-                                            textDirection: TextDirection.rtl,
-                                            style: TextStyle(fontSize: Dimensions.font16,
-                                                color: Colors.black),),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Container(
-                                                width: Dimensions.width45,
-                                                height: Dimensions.width45,
-                                                decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    border: Border.all(color: Colors.redAccent)
-                                                ),
-                                                child: const Icon(Icons.add, color: Colors.black,),
-                                              ),
-                                              Text('245,000 تومان',
-                                                textDirection: TextDirection.rtl,
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: Dimensions.font16
-                                                ),)
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: Dimensions.height10,),
-                              Container(
-                                margin: EdgeInsets.only(
-                                  left: Dimensions.width20,
-                                  right: Dimensions.width20,
-                                ),
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey)
-                                ),
-                                child: Column(
-                                  children: [
-                                    Image.asset("assets/images/comboFood/comboCheese.png",
-                                        alignment: Alignment.topCenter),
-                                    Container(
-                                      margin: EdgeInsets.only(
-                                        left: Dimensions.width10,
-                                        right: Dimensions.width10,
-                                        bottom: Dimensions.width10,
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.end,
-                                        children: [
-                                          Text('کمبو چیز',
-                                            style: TextStyle(fontSize: Dimensions.font20,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w600),),
-                                          SizedBox(height: Dimensions.height10/2,),
-                                          Text('فرش چیزبرگر +هات داگ با پنیر گودا + 2 عدد نوشابه',
-                                            textDirection: TextDirection.rtl,
-                                            style: TextStyle(fontSize: Dimensions.font16,
-                                                color: Colors.black),),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Container(
-                                                width: Dimensions.width45,
-                                                height: Dimensions.width45,
-                                                decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    border: Border.all(color: Colors.redAccent)
-                                                ),
-                                                child: const Icon(Icons.add, color: Colors.black,),
-                                              ),
-                                              Text('265,000 تومان',
-                                                textDirection: TextDirection.rtl,
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: Dimensions.font16
-                                                ),)
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      )
+                          child: Text("کمبو",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w700,
+                                fontSize: Dimensions.font26
+                            ),),
+                        ),
+                      ),
+                      SizedBox(height: Dimensions.height10/2,),
+                      ComboFoodMenu()
                     ],
                   )
                 ]),
