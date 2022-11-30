@@ -24,7 +24,7 @@ class FoodMenuIcon extends StatelessWidget {
       child: Column(
         children: [
           Image.asset("assets/images/unselected_food_types/$imagePath",
-            width: Dimensions.width45,),
+            width: Dimensions.width45),
           Text(iconName, style: TextStyle(color: Colors.grey[900]))
         ],
       ),

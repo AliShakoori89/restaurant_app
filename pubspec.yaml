@@ -70,7 +70,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/unselected_food_types/
-    - assets/images/combo_food/
+    - assets/images/selected_food_types/
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
