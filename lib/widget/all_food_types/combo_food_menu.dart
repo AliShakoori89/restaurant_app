@@ -6,10 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_app/widget/dimensions.dart';
 
 class ComboFoodMenu extends StatefulWidget {
-  ComboFoodMenu({Key? key}) : super(key: key);
+
+  final ScrollController controller;
+
+  ComboFoodMenu({Key? key, required this.controller}) : super(key: key);
 
   @override
-  State<ComboFoodMenu> createState() => _ComboFoodMenuState();
+  State<ComboFoodMenu> createState() => _ComboFoodMenuState(controller);
 }
 
 class _ComboFoodMenuState extends State<ComboFoodMenu> {
@@ -22,6 +25,10 @@ class _ComboFoodMenuState extends State<ComboFoodMenu> {
   List allPutin = [];
   List allAppetizer = [];
   List allPotable = [];
+
+  final ScrollController controller;
+
+  _ComboFoodMenuState(this.controller);
 
   get _fireStoreInstance => FirebaseFirestore.instance;
 
@@ -215,6 +222,7 @@ class _ComboFoodMenuState extends State<ComboFoodMenu> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: widget.controller,
       child: Column(
         children: [
           Align(
@@ -411,7 +419,6 @@ class _ComboFoodMenuState extends State<ComboFoodMenu> {
             padding: EdgeInsets.only(top: Dimensions.height20),
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index){
-              print("lengthhhhhhhhhhhhh ::::::::: "+allHotDog.length.toString());
               return Padding(
                 padding: EdgeInsets.only(bottom: Dimensions.height20),
                 child: Container(
@@ -498,7 +505,6 @@ class _ComboFoodMenuState extends State<ComboFoodMenu> {
             padding: EdgeInsets.only(top: Dimensions.height20),
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index){
-              print("lengthhhhhhhhhhhhh ::::::::: "+allBerger.length.toString());
               return Padding(
                 padding: EdgeInsets.only(bottom: Dimensions.height20),
                 child: Container(

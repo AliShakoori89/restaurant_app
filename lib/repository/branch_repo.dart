@@ -8,11 +8,9 @@ class BranchRepo{
   setBranchName(String branchName, String branchAddress){
     sharedPreferences.setString('branchName', branchName);
     sharedPreferences.setString('branchAddress', branchAddress);
-    print("setBranch setBranch setBranch setBranch setBranch setBranch setBranch setBranch setBranch setBranch");
   }
 
   getBranchName(){
-    print("1111111111111111    "+sharedPreferences.getString('branchName').toString());
     return sharedPreferences.getString('branchName');
   }
 

@@ -22,18 +22,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   late AnimationController _animationController;
   late TabController _tabController;
   var searchController = TextEditingController();
-  final _controller = ScrollController();
+  ScrollController scrollBarController = ScrollController();
   var reserveTime = DateTime.now();
   final String branch = '';
   final String branchAddress = '';
   late bool fixedScroll;
-  // late ScrollController _scrollController;
+  late ScrollController _scrollController;
+  String selected = '';
 
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this, initialIndex: 1);
-    // _scrollController = ScrollController();
-    // _scrollController.addListener(_scrollListener);
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
     // _tabController.addListener(_smoothScrollToTop);
     _animationController =
     AnimationController(vsync: this, duration: const Duration(seconds: 1));
@@ -53,17 +54,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   //   });
   // }
 
-  // _scrollListener() {
-  //   if (fixedScroll) {
-  //     _scrollController.jumpTo(0);
-  //   }
-  // }
+  _scrollListener() {
+    if (fixedScroll) {
+      _scrollController.jumpTo(0);
+    }
+  }
 
   @override
   void dispose() {
     super.dispose();
     _tabController.dispose();
-    // _scrollController.dispose();
+    _scrollController.dispose();
     _animationController.dispose();
   }
 
@@ -247,7 +248,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
       backgroundColor: Colors.white,
       body: SafeArea(
         child: NestedScrollView(
-            // controller: _scrollController,
+            controller: _scrollController,
             headerSliverBuilder: (context, value) {
               return [
                 SliverToBoxAdapter(child: _buildCarousel()),
@@ -284,7 +285,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                   // second tab bar view widget
                   Column(
                     children: [
-                      MenuIcons(controller: _controller,),
+                      MenuIcons(controller: scrollBarController, nestedController: _scrollController, selected: selected),
                       const Divider(
                         color: Colors.grey,
                       ),
@@ -299,7 +300,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                       const Divider(
                         color: Colors.grey,
                       ),
-                      Expanded(child: ComboFoodMenu()),
+                      Expanded(child: ComboFoodMenu(controller: scrollBarController,)),
                     ],
                   )
                 ])

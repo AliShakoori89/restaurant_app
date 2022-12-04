@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/controller/auth_controller.dart';
 import 'package:restaurant_app/controller/branch_controller.dart';
+import 'package:restaurant_app/controller/icon_selected_controller.dart';
 import 'package:restaurant_app/helper/helper_function.dart';
 import 'package:restaurant_app/pages/auth/login_page.dart';
 import 'package:restaurant_app/widget/colors.dart';
@@ -29,7 +30,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
       return GetBuilder<BranchController>(builder: (_){
-        return GetMaterialApp(
+        return GetBuilder<IconSelectedController>(builder: (_){
+          return GetMaterialApp(
             theme: ThemeData(
                 primaryColor: AppColors.mainColor,
                 scaffoldBackgroundColor: Colors.white),
@@ -40,6 +42,6 @@ class _MyAppState extends State<MyApp> {
             // home: _isSignedIn ? const HomePage() : const LoginPage(),
           );
       });
-
+      });
   }
 }

@@ -17,7 +17,6 @@ class BranchController extends GetxController{
   String get address => _address;
 
   setBranch(String branchName, String branchAddress) async{
-    print("setBranch setBranch setBranch setBranch setBranch");
     _name = await branchRepo.setBranchName(branchName, branchAddress);
     // _isLoaded = true;
     update();
