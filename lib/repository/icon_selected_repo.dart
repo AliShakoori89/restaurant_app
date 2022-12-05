@@ -86,7 +86,6 @@ class IconSelectedRepo{
     else if(iconName == "نوشیدنی"){
       selected = "potableSelected";
     }
-    print("OOOOOOOOOOOOOOOOOOOOOOOOOOOo   "+selected);
     return selected;
   }
 }

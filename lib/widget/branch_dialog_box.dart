@@ -7,6 +7,7 @@ import 'package:restaurant_app/widget/dimensions.dart';
 class BranchDialogBox extends StatefulWidget {
   String? branch;
   String? branchAddress;
+  var reserveTime = DateTime.now();
   BranchDialogBox({Key? key, required this.branch, required this.branchAddress}) : super(key: key);
 
   @override
@@ -93,9 +94,6 @@ class _BranchDialogBoxState extends State<BranchDialogBox> {
                           Get.find<BranchController>().getBranchName();
                           Get.find<BranchController>().getBranchAddress();
                           Get.back();
-                          // widget.branch = allBranches[index]["branch-name"];
-                          // widget.branchAddress = allBranches[index]["branch-address"];
-                          // print("11111     "+allBranches[index]["branch-name"]);
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,

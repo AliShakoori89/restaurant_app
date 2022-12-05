@@ -25,7 +25,6 @@ class IconSelectedController extends GetxController{
   }
 
   String changeIconType(String iconName){
-    print("ZZZZZZZZZZZZZZZZZZZ    "+ iconSelectedRepo.scrollMenuListAfterSelectRepo(iconName));
     return iconSelectedRepo.scrollMenuListAfterSelectRepo(iconName);
   }
 }
