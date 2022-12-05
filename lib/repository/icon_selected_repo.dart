@@ -6,6 +6,7 @@ class IconSelectedRepo{
   changeIconTypeRepo(String iconName, ScrollController controller, ScrollController nestedController){
     if(iconName == "کمبو"){
       nestedController.jumpTo(Dimensions.height45*7.2);
+      controller.jumpTo(0);
     }
     else if(iconName == "پیتزا"){
       nestedController.jumpTo(Dimensions.height45*7.2);

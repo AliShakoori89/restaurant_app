@@ -24,7 +24,8 @@ class IconSelectedController extends GetxController{
     return iconSelectedRepo.changeIconTypeRepo(iconName, controller, nestedController);
   }
 
-  // Future<String> changeIconType(String iconName){
-  //
-  // }
+  String changeIconType(String iconName){
+    print("ZZZZZZZZZZZZZZZZZZZ    "+ iconSelectedRepo.scrollMenuListAfterSelectRepo(iconName));
+    return iconSelectedRepo.scrollMenuListAfterSelectRepo(iconName);
+  }
 }
