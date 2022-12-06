@@ -13,17 +13,17 @@ import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/pota
 import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/putin.dart';
 
 
-class ComboFoodMenu extends StatefulWidget {
+class FoodMenu extends StatefulWidget {
 
   final ScrollController controller;
 
-  ComboFoodMenu({Key? key, required this.controller}) : super(key: key);
+  FoodMenu({Key? key, required this.controller}) : super(key: key);
 
   @override
-  State<ComboFoodMenu> createState() => _ComboFoodMenuState(controller);
+  State<FoodMenu> createState() => _FoodMenuState(controller);
 }
 
-class _ComboFoodMenuState extends State<ComboFoodMenu> {
+class _FoodMenuState extends State<FoodMenu> {
   List allCombo = [];
   List allPizza = [];
   List allBerger = [];
@@ -36,7 +36,7 @@ class _ComboFoodMenuState extends State<ComboFoodMenu> {
 
   final ScrollController controller;
 
-  _ComboFoodMenuState(this.controller);
+  _FoodMenuState(this.controller);
 
   get _fireStoreInstance => FirebaseFirestore.instance;
 

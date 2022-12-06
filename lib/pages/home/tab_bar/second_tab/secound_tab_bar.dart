@@ -30,7 +30,7 @@ class SecondTabBar extends StatelessWidget {
         const Divider(
           color: Colors.grey,
         ),
-        Expanded(child: ComboFoodMenu(controller: scrollBarController,)),
+        Expanded(child: FoodMenu(controller: scrollBarController,)),
       ],
     );
   }

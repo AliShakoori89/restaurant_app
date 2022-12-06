@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   ScrollController scrollBarController = ScrollController();
   final String branch = '';
   final String branchAddress = '';
-  late bool fixedScroll;
+  bool? fixedScroll;
   late ScrollController _scrollController;
 
   @override
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   }
 
   _scrollListener() {
-    if (fixedScroll) {
+    if (fixedScroll!) {
       _scrollController.jumpTo(0);
     }
   }

@@ -125,17 +125,19 @@ class FirstTabBar extends StatelessWidget {
                   fontSize: Dimensions.font20
               )),
           SizedBox(height: Dimensions.height10,),
-          Container(
-            margin: EdgeInsets.only(
-              right: Dimensions.width30,
-              left: Dimensions.width30,
-            ),
-            child: Text(Get.find<BranchController>().address,
-              textDirection: TextDirection.rtl,
-              style: TextStyle(
-                fontSize: Dimensions.font20,
-              ),),
+      GetBuilder<BranchController>(builder: (branchController) {
+        return Container(
+          margin: EdgeInsets.only(
+            right: Dimensions.width30,
+            left: Dimensions.width30,
           ),
+          child: Text(Get.find<BranchController>().address ?? '',
+            textDirection: TextDirection.rtl,
+            style: TextStyle(
+              fontSize: Dimensions.font20,
+            ),),
+        );
+      })
         ],
       ),
     );

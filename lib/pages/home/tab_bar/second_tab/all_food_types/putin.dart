@@ -24,7 +24,7 @@ class Putin extends StatelessWidget {
             padding: EdgeInsets.only(
                 right: Dimensions.width20
             ),
-            child: Text("کمبو",
+            child: Text("پوتین",
               textAlign: TextAlign.right,
               style: TextStyle(
                   color: Colors.grey,
