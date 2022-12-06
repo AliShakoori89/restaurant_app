@@ -48,44 +48,4 @@ class IconSelectedRepo{
       controller.jumpTo(Dimensions.height45*338);
     }
   }
-
-  String scrollMenuListAfterSelectRepo(String iconName){
-    late String selected;
-
-    if(iconName == "کمبو"){
-      selected = "comboSelected";
-    }
-    else if(iconName == "پیتزا"){
-      selected = "pizzaSelected";
-    }
-
-    else if(iconName == "هات داگ"){
-      selected = "hotDogSelected";
-    }
-
-    else if(iconName == "برگر"){
-      selected = "bergerSelected";
-    }
-
-    else if(iconName == "ساندویچ گرم"){
-      selected = "hotSandwichSelected";
-    }
-
-    else if(iconName == "سوخاری"){
-      selected = "firedChickenSelected";
-    }
-
-    else if(iconName == "پوتین"){
-      selected = "putinSelected";
-    }
-
-    else if(iconName == "پیش غذا"){
-      selected = "appetizerSelected";
-    }
-
-    else if(iconName == "نوشیدنی"){
-      selected = "potableSelected";
-    }
-    return selected;
-  }
 }

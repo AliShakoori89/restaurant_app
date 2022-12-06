@@ -23,8 +23,4 @@ class IconSelectedController extends GetxController{
   Future<String> scrollMenuListAfterSelect(String iconName, ScrollController controller, ScrollController nestedController) async{
     return iconSelectedRepo.changeIconTypeRepo(iconName, controller, nestedController);
   }
-
-  String changeIconType(String iconName){
-    return iconSelectedRepo.scrollMenuListAfterSelectRepo(iconName);
-  }
 }

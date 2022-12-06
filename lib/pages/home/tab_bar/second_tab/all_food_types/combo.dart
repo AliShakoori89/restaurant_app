@@ -85,7 +85,7 @@ class Combo extends StatelessWidget {
                                 ),
                                 child: const Icon(Icons.add, color: Colors.black,),
                               ),
-                              Text((allCombo[index]["price"])+' تومان',
+                              Text(allCombo[index]["price"]+' تومان',
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,

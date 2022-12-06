@@ -11,10 +11,13 @@ class MenuIcons extends StatefulWidget {
   MenuIcons({Key? key, required this.controller, required this.nestedController}) : super(key: key);
 
   @override
-  State<MenuIcons> createState() => _MenuIconsState();
+  State<MenuIcons> createState() => _MenuIconsState(controller, nestedController);
 }
 
 class _MenuIconsState extends State<MenuIcons> {
+
+  final ScrollController controller;
+  final ScrollController nestedController;
 
   bool potableSelect = false;
   bool appetizerSelect = false;
@@ -25,6 +28,8 @@ class _MenuIconsState extends State<MenuIcons> {
   bool hotDogSelect = false;
   bool pizzaSelect = false;
   bool comboSelect = false;
+
+  _MenuIconsState(this.controller, this.nestedController);
 
   @override
   Widget build(BuildContext context) {
