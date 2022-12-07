@@ -2,16 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/Berger.dart';
-import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/appetizer.dart';
-import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/combo.dart';
-import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/fried_chicken.dart';
-import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/hot_dog.dart';
-import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/hot_sandwich.dart';
-import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/pizza.dart';
-import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/potable.dart';
-import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/putin.dart';
-
+import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/food_detail.dart';
 
 class FoodMenu extends StatefulWidget {
 
@@ -233,15 +224,15 @@ class _FoodMenuState extends State<FoodMenu> {
       controller: widget.controller,
       child: Column(
         children: [
-          Combo(allCombo: allCombo),
-          Pizza(allPizza: allPizza),
-          HotDog(allHotDog: allHotDog),
-          Berger(allBerger: allBerger),
-          HotSandwich(allHotSandwich: allHotSandwich),
-          FriedChicken(allFriedChicken: allFriedChicken),
-          Putin(allPutin: allPutin),
-          Appetizer(allAppetizer: allAppetizer),
-          Potable(allPotable: allPotable)
+          FoodDetail(allFoodSameType: allCombo, foodTypeName: "کمبو"),
+          FoodDetail(allFoodSameType: allPizza, foodTypeName: "پیتزا"),
+          FoodDetail(allFoodSameType: allHotDog, foodTypeName: "هات داگ"),
+          FoodDetail(allFoodSameType: allBerger, foodTypeName: "برگر"),
+          FoodDetail(allFoodSameType: allHotSandwich, foodTypeName: "ساندویچ گرم"),
+          FoodDetail(allFoodSameType: allFriedChicken, foodTypeName: "سوخاری"),
+          FoodDetail(allFoodSameType: allPutin, foodTypeName: "پوتین"),
+          FoodDetail(allFoodSameType: allAppetizer, foodTypeName: "پیش غذا"),
+          FoodDetail(allFoodSameType: allPotable, foodTypeName: "نوشیدنی"),
         ],
       ),
     );
