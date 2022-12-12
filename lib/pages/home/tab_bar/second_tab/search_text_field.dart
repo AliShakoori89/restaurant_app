@@ -35,14 +35,14 @@ class SearchTextField extends StatelessWidget {
             suffixIcon: Icon(icon, color: Colors.grey,),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(2),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                     width: 1.0,
                     color: Colors.grey
                 )
             ),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(2),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                     width: 1.0,
                     color: Colors.grey
                 )

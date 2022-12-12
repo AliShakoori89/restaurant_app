@@ -2,7 +2,11 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_app/controller/order_controller.dart';
 import 'package:restaurant_app/pages/home/tab_bar/second_tab/all_food_types/food_detail.dart';
+import 'package:restaurant_app/widget/colors.dart';
+import 'package:restaurant_app/widget/dimensions.dart';
 
 class FoodMenu extends StatefulWidget {
 
@@ -220,21 +224,88 @@ class _FoodMenuState extends State<FoodMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: widget.controller,
-      child: Column(
+    return GetBuilder<OrderController>(builder: (orderController) {
+      return Stack(
         children: [
-          FoodDetail(allFoodSameType: allCombo, foodTypeName: "کمبو"),
-          FoodDetail(allFoodSameType: allPizza, foodTypeName: "پیتزا"),
-          FoodDetail(allFoodSameType: allHotDog, foodTypeName: "هات داگ"),
-          FoodDetail(allFoodSameType: allBerger, foodTypeName: "برگر"),
-          FoodDetail(allFoodSameType: allHotSandwich, foodTypeName: "ساندویچ گرم"),
-          FoodDetail(allFoodSameType: allFriedChicken, foodTypeName: "سوخاری"),
-          FoodDetail(allFoodSameType: allPutin, foodTypeName: "پوتین"),
-          FoodDetail(allFoodSameType: allAppetizer, foodTypeName: "پیش غذا"),
-          FoodDetail(allFoodSameType: allPotable, foodTypeName: "نوشیدنی"),
+          SingleChildScrollView(
+            controller: widget.controller,
+            child: Column(
+              children: [
+                FoodDetail(allFoodSameType: allCombo, foodTypeName: "کمبو"),
+                FoodDetail(allFoodSameType: allPizza, foodTypeName: "پیتزا"),
+                FoodDetail(allFoodSameType: allHotDog, foodTypeName: "هات داگ"),
+                FoodDetail(allFoodSameType: allBerger, foodTypeName: "برگر"),
+                FoodDetail(allFoodSameType: allHotSandwich, foodTypeName: "ساندویچ گرم"),
+                FoodDetail(allFoodSameType: allFriedChicken, foodTypeName: "سوخاری"),
+                FoodDetail(allFoodSameType: allPutin, foodTypeName: "پوتین"),
+                FoodDetail(allFoodSameType: allAppetizer, foodTypeName: "پیش غذا"),
+                FoodDetail(allFoodSameType: allPotable, foodTypeName: "نوشیدنی"),
+              ],
+            ),
+          ),
+          orderController.quantity == 0
+              ? Container()
+              : Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: AppColors.mainColor
+              ),
+              width: double.infinity,
+              height: Dimensions.height30*2,
+              child: Container(
+                margin: EdgeInsets.only(
+                  left: Dimensions.width20,
+                  right: Dimensions.width20
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Color.fromRGBO(255,137,58, 1)
+                      ),
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            left: Dimensions.width10,
+                            right: Dimensions.width10
+                        ),
+                        child: Row(
+                          children: [
+                            Text("تومان",style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20
+                            )),
+                            Text("288,850",style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20
+                            )),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text("( )", style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20
+                        )),
+                        Text("سبد خرید", style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20
+                        )),
+                        Icon(Icons.shopping_cart_outlined,
+                        color: Colors.white,),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
         ],
-      ),
-    );
+      );
+    });
   }
 }

@@ -15,37 +15,37 @@ class IconSelectedRepo{
 
     else if(iconName == "هات داگ"){
       nestedController.jumpTo(Dimensions.height45*7.2);
-      controller.jumpTo(Dimensions.height45*10*14+Dimensions.height10*9);
+      controller.jumpTo(Dimensions.height45*10*15+Dimensions.height10*15+Dimensions.height45);
     }
 
     else if(iconName == "برگر"){
       nestedController.jumpTo(Dimensions.height45*7.2);
-      controller.jumpTo(Dimensions.height45*10*17+Dimensions.height10);
+      controller.jumpTo(Dimensions.height45*10*18+Dimensions.height10*18+Dimensions.height45*2);
     }
 
     else if(iconName == "ساندویچ گرم"){
       nestedController.jumpTo(Dimensions.height45*7.2);
-      controller.jumpTo(Dimensions.height45*10*23+Dimensions.height10*10);
+      controller.jumpTo(Dimensions.height45*10*25+Dimensions.height10*25+Dimensions.height45*3);
     }
 
     else if(iconName == "سوخاری"){
       nestedController.jumpTo(Dimensions.height45*7.2);
-      controller.jumpTo(Dimensions.height45*10*25+Dimensions.height10*10);
+      controller.jumpTo(Dimensions.height45*10*27+Dimensions.height10*27+Dimensions.height45*4);
     }
 
     else if(iconName == "پوتین"){
       nestedController.jumpTo(Dimensions.height45*7.2);
-      controller.jumpTo(Dimensions.height45*10*28+Dimensions.height10*40);
+      controller.jumpTo(Dimensions.height45*10*31+Dimensions.height10*31+Dimensions.height45*5);
     }
 
     else if(iconName == "پیش غذا"){
       nestedController.jumpTo(Dimensions.height45*7.2);
-      controller.jumpTo(Dimensions.height45*10*30+Dimensions.height10*38);
+      controller.jumpTo(Dimensions.height45*10*33+Dimensions.height10*33+Dimensions.height45*6);
     }
 
     else if(iconName == "نوشیدنی"){
       nestedController.jumpTo(Dimensions.height45*7.2);
-      controller.jumpTo(Dimensions.height45*10*34+Dimensions.height10*20);
+      controller.jumpTo(Dimensions.height45*10*37+Dimensions.height10*37+Dimensions.height45*7);
     }
   }
 }

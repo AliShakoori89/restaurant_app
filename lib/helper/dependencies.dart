@@ -1,10 +1,12 @@
 import 'package:restaurant_app/controller/auth_controller.dart';
 import 'package:restaurant_app/controller/branch_controller.dart';
 import 'package:restaurant_app/controller/icon_selected_controller.dart';
+import 'package:restaurant_app/controller/order_controller.dart';
 import 'package:restaurant_app/repository/auth_repo.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/repository/branch_repo.dart';
 import 'package:restaurant_app/repository/icon_selected_repo.dart';
+import 'package:restaurant_app/repository/order_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> init() async{
@@ -16,6 +18,7 @@ Future<void> init() async{
   // Get.lazyPut(() => ApiClient(appBaseUrl: AppConstants.baseUrl, sharedPreferences: Get.find()));
   Get.lazyPut(() => AuthRepo());
   Get.lazyPut(() => IconSelectedRepo());
+  Get.lazyPut(() => OrderRepo(sharedPreferences: Get.find()));
   Get.lazyPut(() => BranchRepo(sharedPreferences: Get.find()));
   // Get.lazyPut(() => UserRepo(apiClient: Get.find()));
   //
@@ -27,6 +30,7 @@ Future<void> init() async{
   // //controllers
   Get.lazyPut(() => AuthController(authRepo: Get.find()));
   Get.lazyPut(() => BranchController(branchRepo: Get.find()));
+  Get.lazyPut(() => OrderController(orderRepo: Get.find()));
   Get.lazyPut(() => IconSelectedController(iconSelectedRepo: Get.find()));
   // Get.lazyPut(() => UserController(userRepo: Get.find()));
   // Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find()));
