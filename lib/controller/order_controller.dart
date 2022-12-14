@@ -11,14 +11,37 @@ class OrderController extends GetxController{
   int _quantity = 0;
   int get quantity => _quantity;
 
-  void setQuantity(bool isIncrement){
+  int _count = 0;
+  int get count => _count;
+
+  int _counter = 0;
+  int get counter => _counter;
+
+  void setQuantity(String name, bool isIncrement){
     if(isIncrement){
       _quantity = checkQuantity(_quantity+1);
+      orderRepo.addCount(name, _quantity);
     }else{
       _quantity = checkQuantity(_quantity-1);
+      orderRepo.removeCount(name, _quantity);
     }
     update();
   }
+
+  Future<void> fetchData() async{
+    _count = await orderRepo.fetchDataRepo();
+    print("???????????????????????????   "+_count.toString());
+
+    update();
+  }
+
+  Future<int> getCounter(String name){
+    return orderRepo.getCountRepo(name);
+  }
+
+  // setCount(String name, int count){
+  //   orderRepo.setCountRepo(name, count);
+  // }
 
   int checkQuantity(int quantity) {
     if (quantity < 0) {

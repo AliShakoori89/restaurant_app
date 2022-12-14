@@ -35,6 +35,9 @@ class _FoodMenuState extends State<FoodMenu> {
 
   get _fireStoreInstance => FirebaseFirestore.instance;
 
+  _loadResource() async{
+  }
+
   fetchRestaurantComboFood() async{
 
     QuerySnapshot qn = await _fireStoreInstance.collection('fast food menu').get();
@@ -46,6 +49,7 @@ class _FoodMenuState extends State<FoodMenu> {
               "detail": qn.docs[i]["detail"],
               "image": qn.docs[i]["image"],
               "price": qn.docs[i]["price"],
+              "count": qn.docs[i]["count"],
             }
         );
       }
@@ -65,6 +69,7 @@ class _FoodMenuState extends State<FoodMenu> {
               "detail": qn.docs[i]["detail"],
               "image": qn.docs[i]["image"],
               "price": qn.docs[i]["price"],
+              "count": qn.docs[i]["count"],
             }
         );
       }
@@ -83,6 +88,7 @@ class _FoodMenuState extends State<FoodMenu> {
               "detail": qn.docs[i]["detail"],
               "image": qn.docs[i]["image"],
               "price": qn.docs[i]["price"],
+              "count": qn.docs[i]["count"],
             }
         );
       }
@@ -102,6 +108,7 @@ class _FoodMenuState extends State<FoodMenu> {
               "detail": qn.docs[i]["detail"],
               "image": qn.docs[i]["image"],
               "price": qn.docs[i]["price"],
+              "count": qn.docs[i]["count"],
             }
         );
       }
@@ -121,6 +128,7 @@ class _FoodMenuState extends State<FoodMenu> {
               "detail": qn.docs[i]["detail"],
               "image": qn.docs[i]["image"],
               "price": qn.docs[i]["price"],
+              "count": qn.docs[i]["count"],
             }
         );
       }
@@ -140,6 +148,7 @@ class _FoodMenuState extends State<FoodMenu> {
               "detail": qn.docs[i]["detail"],
               "image": qn.docs[i]["image"],
               "price": qn.docs[i]["price"],
+              "count": qn.docs[i]["count"],
             }
         );
       }
@@ -159,6 +168,7 @@ class _FoodMenuState extends State<FoodMenu> {
               "detail": qn.docs[i]["detail"],
               "image": qn.docs[i]["image"],
               "price": qn.docs[i]["price"],
+              "count": qn.docs[i]["count"],
             }
         );
       }
@@ -178,6 +188,7 @@ class _FoodMenuState extends State<FoodMenu> {
               "detail": qn.docs[i]["detail"],
               "image": qn.docs[i]["image"],
               "price": qn.docs[i]["price"],
+              "count": qn.docs[i]["count"],
             }
         );
       }
@@ -196,6 +207,7 @@ class _FoodMenuState extends State<FoodMenu> {
               "name": qn.docs[i]["name"],
               "image": qn.docs[i]["image"],
               "price": qn.docs[i]["price"],
+              "count": qn.docs[i]["count"],
             }
         );
       }
@@ -219,6 +231,8 @@ class _FoodMenuState extends State<FoodMenu> {
     fetchRestaurantPutin();
     fetchRestaurantAppetizer();
     fetchRestaurantPotable();
+
+    _loadResource();
     super.initState();
   }
 

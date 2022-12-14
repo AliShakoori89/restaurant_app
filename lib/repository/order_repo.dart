@@ -1,24 +1,43 @@
-import 'dart:convert';
-import 'package:restaurant_app/widget/app_constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OrderRepo {
+
+  int? quantity;
+  String? name;
   final SharedPreferences sharedPreferences;
-  OrderRepo({required this.sharedPreferences});
+  OrderRepo({this.quantity, this.name, required this.sharedPreferences});
 
-  List<String> cart = [];
+  addCount(name, quantity){
+    if(name == "سوپر کمبو"){
+      FirebaseFirestore.instance.collection('fast food menu').doc('7QflL9dULx8scj6hvUiN').update({'count': quantity});
+      sharedPreferences.setString(name, quantity.toString());
+    }
+  }
 
-  // void addToCartList(List<FoodModel> cartList) {
-  //   // sharedPreferences.remove(AppConstants.cartList);
-  //   // sharedPreferences.remove(AppConstants.cartHistoryList);
-  //   cart = [];
-  //   var time = DateTime.now().toString();
-  //   cartList.forEach((element) {
-  //     element.time = time;
-  //     element.price =
-  //     return cart.add(jsonEncode(element));
-  //   });
-  //   sharedPreferences.setStringList(AppConstants.cartList, cart);
-  //   //print(sharedPreferences.getStringList(AppConstants.cartList));
+  removeCount(name, quantity){
+    if(name == "سوپر کمبو"){
+      FirebaseFirestore.instance.collection('fast food menu').doc('7QflL9dULx8scj6hvUiN').update({'count': quantity});
+      sharedPreferences.setString(name, quantity.toString());
+    }
+  }
+
+  // setCountRepo(String name, int count) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.setInt(name ,count );
   // }
+
+  Future<int> getCountRepo(String name) async{
+    print(" name name name    "+ name);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final int? counter = prefs.getInt(name);
+    return counter!;
+  }
+
+  Future<int> fetchDataRepo() async{
+    var data = await FirebaseFirestore.instance.collection("fast food menu").doc('7QflL9dULx8scj6hvUiN').get();
+    final count = await data.data()?['count'];
+    print("*&&&&*&*&*&&&&*&*&*&*&*&*&*&&&    "+ count.toString());
+    return count;
+  }
 }

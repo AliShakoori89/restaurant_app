@@ -5,13 +5,24 @@ import 'package:restaurant_app/controller/order_controller.dart';
 import 'package:restaurant_app/widget/colors.dart';
 import 'dart:typed_data';
 import 'package:restaurant_app/widget/dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class FoodDetail extends StatelessWidget {
+class FoodDetail extends StatefulWidget {
 
   final String foodTypeName;
   final List allFoodSameType;
 
   FoodDetail({Key? key, required this.allFoodSameType, required this.foodTypeName}) : super(key: key);
+
+  @override
+  State<FoodDetail> createState() => _FoodDetailState(foodTypeName, allFoodSameType);
+}
+
+class _FoodDetailState extends State<FoodDetail> {
+  final String foodTypeName;
+  final List allFoodSameType;
+
+  _FoodDetailState(this.foodTypeName, this.allFoodSameType);
 
   Uint8List convertBase64Image(String base64String) {
     return const Base64Decoder().convert(base64String.split(',').last);
@@ -27,7 +38,7 @@ class FoodDetail extends StatelessWidget {
             padding: EdgeInsets.only(
                 right: Dimensions.width20
             ),
-            child: Text(foodTypeName,
+            child: Text(widget.foodTypeName,
               textAlign: TextAlign.right,
               style: TextStyle(
                   color: Colors.grey,
@@ -39,10 +50,13 @@ class FoodDetail extends StatelessWidget {
         SizedBox(height: Dimensions.height10/2,),
         ListView.builder(
           shrinkWrap: true,
-          itemCount: allFoodSameType.length,
+          itemCount: widget.allFoodSameType.length,
           padding: EdgeInsets.only(top: Dimensions.height20),
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index){
+            print("######################  "+widget.allFoodSameType[index]["count"].toString());
+            print("######################  "+widget.allFoodSameType[index]["name"].toString());
+
             return SizedBox(
               width: Dimensions.width45*10,
               height: Dimensions.height45*10.1,
@@ -58,7 +72,7 @@ class FoodDetail extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Image.memory(convertBase64Image(allFoodSameType[index]["image"]),
+                      Image.memory(convertBase64Image(widget.allFoodSameType[index]["image"]),
                         gaplessPlayback: true,),
                       // Image.asset("assets/images/combo_food/combo.png",
                       //     alignment: Alignment.topCenter),
@@ -72,15 +86,15 @@ class FoodDetail extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             SizedBox(height: Dimensions.height10,),
-                            Text(allFoodSameType[index]["name"],
+                            Text(widget.allFoodSameType[index]["name"],
                               style: TextStyle(fontSize: Dimensions.font20,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600),),
-                            allFoodSameType[index]["detail"] != null
+                            widget.allFoodSameType[index]["detail"] != null
                                 ? SizedBox(height: Dimensions.height10/2,)
                                 : const SizedBox(),
-                            allFoodSameType[index]["detail"] != null
-                                ? Text(allFoodSameType[index]["detail"],
+                            widget.allFoodSameType[index]["detail"] != null
+                                ? Text(widget.allFoodSameType[index]["detail"],
                               textDirection: TextDirection.rtl,
                               style: TextStyle(fontSize: Dimensions.font16,
                                   color: Colors.black),)
@@ -91,10 +105,10 @@ class FoodDetail extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 GetBuilder<OrderController>(builder: (orderController) {
-                                  return orderController.quantity == 0
+                                  return orderController.counter == 0
                                       ? GestureDetector(
                                     onTap: () {
-                                      orderController.setQuantity(true);
+                                      orderController.setQuantity(widget.allFoodSameType[index]["name"], true);
                                     },
                                     child: Container(
                                       width: Dimensions.width30,
@@ -114,7 +128,7 @@ class FoodDetail extends StatelessWidget {
                                     children: [
                                       GestureDetector(
                                         onTap: () {
-                                          orderController.setQuantity(true);
+                                          orderController.setQuantity(widget.allFoodSameType[index]["name"], true);
                                         },
                                         child: Container(
                                           width: Dimensions.width30,
@@ -140,7 +154,7 @@ class FoodDetail extends StatelessWidget {
                                       ),
                                       GestureDetector(
                                         onTap: () {
-                                          orderController.setQuantity(false);
+                                          orderController.setQuantity(widget.allFoodSameType[index]["name"], false);
                                         },
                                         child: Container(
                                           width: Dimensions.width30,
@@ -160,7 +174,7 @@ class FoodDetail extends StatelessWidget {
                                     ],
                                   );
                                 }),
-                                Text('${allFoodSameType[index]["price"]} تومان',
+                                Text('${widget.allFoodSameType[index]["price"]} تومان',
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
