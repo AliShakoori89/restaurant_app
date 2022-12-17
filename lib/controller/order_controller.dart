@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
+import 'package:restaurant_app/model/cart_model.dart';
 import 'package:restaurant_app/repository/order_repo.dart';
 
 class OrderController extends GetxController{
@@ -11,11 +14,14 @@ class OrderController extends GetxController{
   int _quantity = 0;
   int get quantity => _quantity;
 
-  int _count = 0;
-  int get count => _count;
+  int _product = 0;
+  int get product => _product;
 
   int _counter = 0;
   int get counter => _counter;
+
+  List<CartModel> _taskList = [];
+  List<CartModel> get taskList => _taskList;
 
   void setQuantity(String name, bool isIncrement){
     if(isIncrement){
@@ -28,11 +34,16 @@ class OrderController extends GetxController{
     update();
   }
 
-  Future<void> fetchData() async{
-    _count = await orderRepo.fetchDataRepo();
-    print("???????????????????????????   "+_count.toString());
-
-    update();
+  Future<dynamic> fetchData() async{
+    print("111111111111111111111111111111    ");
+    var response = await orderRepo.fetchDataRepo();
+    print("333333333333333333333333333333333    "+response.statusCode.toString());
+    if(response.statusCode == 200){
+      Iterable l = json.decode(response.body);
+      _taskList = List<CartModel>.from(l.map((model)=> CartModel.fromJson(model)));
+      print("333333333333333333333333333333333    "+_taskList.toString());
+      update();
+    }
   }
 
   Future<int> getCounter(String name){

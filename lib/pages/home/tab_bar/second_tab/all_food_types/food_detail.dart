@@ -29,6 +29,13 @@ class _FoodDetailState extends State<FoodDetail> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Get.find<OrderController>().fetchData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -104,76 +111,76 @@ class _FoodDetailState extends State<FoodDetail> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                GetBuilder<OrderController>(builder: (orderController) {
-                                  return orderController.counter == 0
-                                      ? GestureDetector(
-                                    onTap: () {
-                                      orderController.setQuantity(widget.allFoodSameType[index]["name"], true);
-                                    },
-                                    child: Container(
-                                      width: Dimensions.width30,
-                                      height: Dimensions.width30,
-                                      decoration: BoxDecoration(
-                                          color: AppColors.mainColor,
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                              color: AppColors.mainColor)),
-                                      child: const Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  )
-                                      : Row(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          orderController.setQuantity(widget.allFoodSameType[index]["name"], true);
-                                        },
-                                        child: Container(
-                                          width: Dimensions.width30,
-                                          height: Dimensions.width30,
-                                          decoration: BoxDecoration(
-                                              color: AppColors.mainColor,
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                  color:
-                                                  AppColors.mainColor)),
-                                          child: const Icon(
-                                            Icons.add,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: Dimensions.width10 / 2,
-                                      ),
-                                      Text(orderController.quantity.toString()),
-                                      SizedBox(
-                                        width: Dimensions.width10 / 2,
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          orderController.setQuantity(widget.allFoodSameType[index]["name"], false);
-                                        },
-                                        child: Container(
-                                          width: Dimensions.width30,
-                                          height: Dimensions.width30,
-                                          decoration: BoxDecoration(
-                                              color: AppColors.mainColor,
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                  color:
-                                                  AppColors.mainColor)),
-                                          child: const Icon(
-                                            Icons.remove,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                }),
+                                // GetBuilder<OrderController>(builder: (orderController) {
+                                //   return orderController.taskList[index].quantity == 0
+                                //       ? GestureDetector(
+                                //     onTap: () {
+                                //       orderController.setQuantity(widget.allFoodSameType[index]["name"], true);
+                                //     },
+                                //     child: Container(
+                                //       width: Dimensions.width30,
+                                //       height: Dimensions.width30,
+                                //       decoration: BoxDecoration(
+                                //           color: AppColors.mainColor,
+                                //           shape: BoxShape.circle,
+                                //           border: Border.all(
+                                //               color: AppColors.mainColor)),
+                                //       child: const Icon(
+                                //         Icons.add,
+                                //         color: Colors.white,
+                                //       ),
+                                //     ),
+                                //   )
+                                //       : Row(
+                                //     children: [
+                                //       GestureDetector(
+                                //         onTap: () {
+                                //           orderController.setQuantity(widget.allFoodSameType[index]["name"], true);
+                                //         },
+                                //         child: Container(
+                                //           width: Dimensions.width30,
+                                //           height: Dimensions.width30,
+                                //           decoration: BoxDecoration(
+                                //               color: AppColors.mainColor,
+                                //               shape: BoxShape.circle,
+                                //               border: Border.all(
+                                //                   color:
+                                //                   AppColors.mainColor)),
+                                //           child: const Icon(
+                                //             Icons.add,
+                                //             color: Colors.white,
+                                //           ),
+                                //         ),
+                                //       ),
+                                //       SizedBox(
+                                //         width: Dimensions.width10 / 2,
+                                //       ),
+                                //       Text(orderController.taskList[index].quantity.toString()),
+                                //       SizedBox(
+                                //         width: Dimensions.width10 / 2,
+                                //       ),
+                                //       GestureDetector(
+                                //         onTap: () {
+                                //           orderController.setQuantity(widget.allFoodSameType[index]["name"], false);
+                                //         },
+                                //         child: Container(
+                                //           width: Dimensions.width30,
+                                //           height: Dimensions.width30,
+                                //           decoration: BoxDecoration(
+                                //               color: AppColors.mainColor,
+                                //               shape: BoxShape.circle,
+                                //               border: Border.all(
+                                //                   color:
+                                //                   AppColors.mainColor)),
+                                //           child: const Icon(
+                                //             Icons.remove,
+                                //             color: Colors.white,
+                                //           ),
+                                //         ),
+                                //       ),
+                                //     ],
+                                //   );
+                                // }),
                                 Text('${widget.allFoodSameType[index]["price"]} تومان',
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(

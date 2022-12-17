@@ -34,10 +34,13 @@ class OrderRepo {
     return counter!;
   }
 
-  Future<int> fetchDataRepo() async{
+  Future<dynamic> fetchDataRepo() async{
+    print("*******************");
     var data = await FirebaseFirestore.instance.collection("fast food menu").doc('7QflL9dULx8scj6hvUiN').get();
-    final count = await data.data()?['count'];
-    print("*&&&&*&*&*&&&&*&*&*&*&*&*&*&&&    "+ count.toString());
-    return count;
+    print("2222222   "+data.toString());
+    final count = data.data();
+    // final count = await data.data()?['count'];
+    // print("*&&&&*&*&*&&&&*&*&*&*&*&*&*&&&    "+ count.toString());
+    return data;
   }
 }
